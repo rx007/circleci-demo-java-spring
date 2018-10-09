@@ -25,7 +25,6 @@ jobs:
             - ~/.m2
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
-      - run: mvn package
       - run: mvn test -Dtest=$(circleci tests glob src/test/**/*.java | grep -o -E "DemoJava.*Tests" | circleci tests split)
       
       - store_test_results:

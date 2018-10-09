@@ -27,7 +27,7 @@ jobs:
       
       - run: mvn test -Dtest=$(circleci tests glob src/test/**/*.java | grep -o -E "DemoJava.*Tests" | circleci tests split)
 
-      - run: mvn -DskipTests
+      - run: mvn -DskipTests package
       
       - store_test_results:
           path: target/surefire-reports

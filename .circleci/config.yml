@@ -26,6 +26,8 @@ jobs:
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
       - run: mvn test -Dtest=$(circleci tests glob src/test/**/*.java | grep -o -E "DemoJava.*Tests" | circleci tests split)
+
+      - run: mvn -Dmaven.test.skip
       
       - store_test_results:
           path: target/surefire-reports

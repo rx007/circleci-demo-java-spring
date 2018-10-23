@@ -1,12 +1,11 @@
 version: 2
 jobs:
   build:
-    context: demo
     docker:
       - image: circleci/openjdk:8-jdk-browsers
       - image: circleci/postgres:9.6.3-alpine
         environment:
-          POSTGRES_USER: root#$PG_USER
+          POSTGRES_USER: $PG_USER
           POSTGRES_DB: circle_test
 
     steps:
@@ -32,6 +31,7 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - build
+      - build:
+        context: demo
       - lint
 

@@ -15,7 +15,6 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: mvn test
-      - run: mvn checkstyle:checkstyle
 
   lint:
     docker:
